@@ -16,8 +16,12 @@ CFLAGS=-a -tags netgo
 # Default target
 .DEFAULT_GOAL: $(BINARY)
 
+# Get dependencies (go dep in the future)
+deps:
+	go get ./...
+
 # Builds the project
-build:
+build: deps
 	${GO_ENV} go build ${CFLAGS} ${LDFLAGS} -o ${BINARY} .
 
 # Installs project: copies binaries
